@@ -1,0 +1,57 @@
+<web-app>
+
+<servlet>
+  <servlet-name>TodoLoginServlet</servlet-name>
+  <servlet-class>TodoLoginServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>TodoLoginServlet</servlet-name>
+  <url-pattern>/login</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>TodoSignUpServlet</servlet-name>
+  <servlet-class>TodoSignUpServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>TodoSignUpServlet</servlet-name>
+  <url-pattern>/signup</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>TodoLogoutServlet</servlet-name>
+  <servlet-class>TodoLogoutServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>TodoLogoutServlet</servlet-name>
+  <url-pattern>/logout</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>TodoAddServlet</servlet-name>
+  <servlet-class>TodoAddServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>TodoAddServlet</servlet-name>
+  <url-pattern>/add</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>TodoRemoveServlet</servlet-name>
+  <servlet-class>TodoRemoveServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>TodoRemoveServlet</servlet-name>
+  <url-pattern>/remove</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>TodoChangeServlet</servlet-name>
+  <servlet-class>TodoChangeServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>TodoChangeServlet</servlet-name>
+  <url-pattern>/change</url-pattern>
+</servlet-mapping>
+
+</web-app>
