@@ -20,21 +20,11 @@ public class TodoAddServlet extends HttpServlet {
 	    System.out.println("add: userId="+userId);
 	    System.out.println("add: text="+text);
 	    try {
-		Connection conn = Database.getConnection();
+		Database db = new Database();
 		try {
-		    String sql1 = "SELECT max(TodoId)+1 FROM todo;";
-		    PreparedStatement stmt1 = conn.prepareStatement(sql1);
-		    ResultSet rs1 = stmt1.executeQuery();
-		    rs1.next();
-		    int todoId = rs1.getInt(1);
-		    String sql2 = "INSERT INTO todo VALUES (?, ?, ?);";
-		    PreparedStatement stmt2 = conn.prepareStatement(sql2);
-		    stmt2.setInt(1, todoId);
-		    stmt2.setInt(2, userId);
-		    stmt2.setString(3, text);
-		    stmt2.executeUpdate();
+		    db.addTodo(userId, text);
 		} finally {
-		    conn.close();
+		    db.close();
 		}
 	    } catch (SQLException e) {
 		System.out.println(e);

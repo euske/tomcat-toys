@@ -1,4 +1,5 @@
 <%@page import="java.sql.*" %>
+<%@page import="TodoDAO.Database" %>
 <html>
 <body>
 <h1>Details</h1>
@@ -17,18 +18,12 @@
    if (0 < userId && todoId != null) {
         System.out.println("detail: userId="+userId);
         System.out.println("detail: todoId="+todoId);
-	String url = "jdbc:sqlite:..\\webapps\\kadai4\\WEB-INF\\var\\todo.db";
 	try {
-	    Class.forName("org.sqlite.JDBC");
-	    Connection conn = DriverManager.getConnection(url);
+	    Database db = new Database(url);
 	    try {
-		String sql1 = "SELECT TodoText FROM todo WHERE UserId = ? AND TodoId = ?;";
-		PreparedStatement stmt1 = conn.prepareStatement(sql1);
-		stmt1.setInt(1, userId);
-		stmt1.setInt(2, Integer.parseInt(todoId));
-		ResultSet rs1 = stmt1.executeQuery();
-		while (rs1.next()) {
-		    String todoText = rs1.getString(1);
+		ResultSet rs = db.getTodo1(userId, Integer.parseInt(todoId));
+		while (rs.next()) {
+		    String todoText = rs.getString(1);
 		    System.out.println("detail: todoText="+todoText);
 %>
 <form method="POST" action="change">
@@ -44,10 +39,8 @@
 <%
 		}
 	    } finally {
-		conn.close();
+		db.close();
 	    }
-	} catch (ClassNotFoundException e) {
-	    System.out.println(e);
 	} catch (SQLException e) {
 	    System.out.println(e);
 	}

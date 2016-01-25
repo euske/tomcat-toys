@@ -20,15 +20,11 @@ public class TodoRemoveServlet extends HttpServlet {
 	    System.out.println("remove: userId="+userId);
 	    System.out.println("remove: todoId="+todoId);
 	    try {
-		Connection conn = Database.getConnection();
+		Database db = new Database();
 		try {
-		    String sql1 = "DELETE FROM todo WHERE TodoId = ? AND UserId = ?;";
-		    PreparedStatement stmt1 = conn.prepareStatement(sql1);
-		    stmt1.setInt(1, Integer.parseInt(todoId));
-		    stmt1.setInt(2, userId);
-		    stmt1.executeUpdate();
+		    db.removeTodo(userId, Integer.parseInt(todoId));
 		} finally {
-		    conn.close();
+		    db.close();
 		}
 	    } catch (SQLException e) {
 		System.out.println(e);

@@ -22,16 +22,11 @@ public class TodoChangeServlet extends HttpServlet {
 	    System.out.println("change: todoText="+todoText);
 	    System.out.println("change: todoId="+todoId);
 	    try {
-		Connection conn = Database.getConnection();
+		Database db = new Database();
 		try {
-		    String sql1 = "UPDATE todo SET TodoText = ? WHERE TodoId = ? AND UserId = ?;";
-		    PreparedStatement stmt1 = conn.prepareStatement(sql1);
-		    stmt1.setString(1, todoText);
-		    stmt1.setInt(2, Integer.parseInt(todoId));
-		    stmt1.setInt(3, userId);
-		    stmt1.executeUpdate();
+		    db.changeTodo(userId, Integer.parseInt(todoId), todoText);
 		} finally {
-		    conn.close();
+		    db.close();
 		}
 	    } catch (SQLException e) {
 		System.out.println(e);
