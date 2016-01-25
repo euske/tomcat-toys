@@ -30,14 +30,15 @@ install: $(CLASSES)
 	-$(CP) jsp/*.jsp $(APPDIR)
 
 bin/TodoLoginServlet.class: src/TodoLoginServlet.java
-	$(JAVAC) -d bin $<
+	$(JAVAC) -sourcepath src -d bin $<
 bin/TodoLogoutServlet.class: src/TodoLogoutServlet.java
-	$(JAVAC) -d bin $<
+	$(JAVAC) -sourcepath src -d bin $<
 bin/TodoSignUpServlet.class: src/TodoSignUpServlet.java
-	$(JAVAC) -d bin $<
+	$(JAVAC) -sourcepath src -d bin $<
 bin/TodoAddServlet.class: src/TodoAddServlet.java
-	$(JAVAC) -d bin $<
+	$(JAVAC) -sourcepath src -d bin $<
 bin/TodoRemoveServlet.class: src/TodoRemoveServlet.java
-	$(JAVAC) -d bin $<
+	$(JAVAC) -sourcepath src -d bin $<
 bin/TodoChangeServlet.class: src/TodoChangeServlet.java
-	$(JAVAC) -d bin $<
+	$(JAVAC) -sourcepath src -d bin $<
+

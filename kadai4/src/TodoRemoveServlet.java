@@ -2,11 +2,13 @@ import java.io.*;
 import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import TodoDAO.Database;
 
 public class TodoRemoveServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
 			  HttpServletResponse response)
         throws ServletException, IOException {
+	
 	String todoId = request.getParameter("todo");
 	int userId = -1;
 	for (Cookie c : request.getCookies()) {
@@ -17,10 +19,8 @@ public class TodoRemoveServlet extends HttpServlet {
 	if (0 < userId && todoId != null) {
 	    System.out.println("remove: userId="+userId);
 	    System.out.println("remove: todoId="+todoId);
-	    String url = "jdbc:sqlite:..\\webapps\\kadai4\\WEB-INF\\var\\todo.db";
 	    try {
-		Class.forName("org.sqlite.JDBC");
-		Connection conn = DriverManager.getConnection(url);
+		Connection conn = Database.getConnection();
 		try {
 		    String sql1 = "DELETE FROM todo WHERE TodoId = ? AND UserId = ?;";
 		    PreparedStatement stmt1 = conn.prepareStatement(sql1);
@@ -30,8 +30,6 @@ public class TodoRemoveServlet extends HttpServlet {
 		} finally {
 		    conn.close();
 		}
-	    } catch (ClassNotFoundException e) {
-		System.out.println(e);
 	    } catch (SQLException e) {
 		System.out.println(e);
 	    }

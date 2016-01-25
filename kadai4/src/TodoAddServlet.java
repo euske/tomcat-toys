@@ -2,6 +2,7 @@ import java.io.*;
 import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import TodoDAO.Database;
 
 public class TodoAddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
@@ -18,10 +19,8 @@ public class TodoAddServlet extends HttpServlet {
 	if (0 < userId && text != null) {
 	    System.out.println("add: userId="+userId);
 	    System.out.println("add: text="+text);
-	    String url = "jdbc:sqlite:..\\webapps\\kadai4\\WEB-INF\\var\\todo.db";
 	    try {
-		Class.forName("org.sqlite.JDBC");
-		Connection conn = DriverManager.getConnection(url);
+		Connection conn = Database.getConnection();
 		try {
 		    String sql1 = "SELECT max(TodoId)+1 FROM todo;";
 		    PreparedStatement stmt1 = conn.prepareStatement(sql1);
@@ -37,8 +36,6 @@ public class TodoAddServlet extends HttpServlet {
 		} finally {
 		    conn.close();
 		}
-	    } catch (ClassNotFoundException e) {
-		System.out.println(e);
 	    } catch (SQLException e) {
 		System.out.println(e);
 	    }

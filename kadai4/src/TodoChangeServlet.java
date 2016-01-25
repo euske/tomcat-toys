@@ -2,11 +2,13 @@ import java.io.*;
 import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import TodoDAO.Database;
 
 public class TodoChangeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
 			  HttpServletResponse response)
         throws ServletException, IOException {
+	
 	String todoText = request.getParameter("text");
 	String todoId = request.getParameter("todo");
 	int userId = -1;
@@ -19,10 +21,8 @@ public class TodoChangeServlet extends HttpServlet {
 	    System.out.println("change: userId="+userId);
 	    System.out.println("change: todoText="+todoText);
 	    System.out.println("change: todoId="+todoId);
-	    String url = "jdbc:sqlite:..\\webapps\\kadai4\\WEB-INF\\var\\todo.db";
 	    try {
-		Class.forName("org.sqlite.JDBC");
-		Connection conn = DriverManager.getConnection(url);
+		Connection conn = Database.getConnection();
 		try {
 		    String sql1 = "UPDATE todo SET TodoText = ? WHERE TodoId = ? AND UserId = ?;";
 		    PreparedStatement stmt1 = conn.prepareStatement(sql1);
@@ -33,8 +33,6 @@ public class TodoChangeServlet extends HttpServlet {
 		} finally {
 		    conn.close();
 		}
-	    } catch (ClassNotFoundException e) {
-		System.out.println(e);
 	    } catch (SQLException e) {
 		System.out.println(e);
 	    }
