@@ -51,7 +51,7 @@ public class Database {
 	return userId;
     }
     
-    public void addTodo(int userId, String todoText) throws SQLException {
+    public int addTodo(int userId, String todoText) throws SQLException {
 	String sql1 = "SELECT max(TodoId)+1 FROM todo;";
 	PreparedStatement stmt1 = conn.prepareStatement(sql1);
 	ResultSet rs1 = stmt1.executeQuery();
@@ -63,6 +63,7 @@ public class Database {
 	stmt2.setInt(2, userId);
 	stmt2.setString(3, todoText);
 	stmt2.executeUpdate();
+	return todoId;
     }
 
     public void changeTodo(int userId, int todoId, String todoText) throws SQLException {

@@ -7,7 +7,7 @@ JAVAC=javac -cp "$(CLASSPATH)"
 APPDIR=$$HOME/Windows/bin/tomcat/webapps/kadai4
 
 LIBDIR=lib
-CLASSPATH=$(LIBDIR)/servlet-api.jar:$(LIBDIR)/sqlite-jdbc-3.8.7.jar
+CLASSPATH=$(LIBDIR)/servlet-api.jar:$(LIBDIR)/sqlite-jdbc-3.8.7.jar:src
 CLASSES=bin/TodoLoginServlet.class \
 	bin/TodoLogoutServlet.class \
 	bin/TodoSignUpServlet.class \
@@ -23,22 +23,23 @@ clean:
 install: $(CLASSES)
 	-$(MKDIR) $(APPDIR)/WEB-INF
 	-$(MKDIR) $(APPDIR)/WEB-INF/classes
+	-$(MKDIR) $(APPDIR)/WEB-INF/classes/TodoDAO
 	-$(MKDIR) $(APPDIR)/WEB-INF/lib
 	-$(CP) web.xml $(APPDIR)/WEB-INF
 	-$(CP) bin/*.class $(APPDIR)/WEB-INF/classes
+	-$(CP) bin/TodoDAO/*.class $(APPDIR)/WEB-INF/classes/TodoDAO
 	-$(CP) lib/*.jar $(APPDIR)/WEB-INF/lib
 	-$(CP) jsp/*.jsp $(APPDIR)
 
 bin/TodoLoginServlet.class: src/TodoLoginServlet.java
-	$(JAVAC) -sourcepath src -d bin $<
+	$(JAVAC) -d bin $<
 bin/TodoLogoutServlet.class: src/TodoLogoutServlet.java
-	$(JAVAC) -sourcepath src -d bin $<
+	$(JAVAC) -d bin $<
 bin/TodoSignUpServlet.class: src/TodoSignUpServlet.java
-	$(JAVAC) -sourcepath src -d bin $<
+	$(JAVAC) -d bin $<
 bin/TodoAddServlet.class: src/TodoAddServlet.java
-	$(JAVAC) -sourcepath src -d bin $<
+	$(JAVAC) -d bin $<
 bin/TodoRemoveServlet.class: src/TodoRemoveServlet.java
-	$(JAVAC) -sourcepath src -d bin $<
+	$(JAVAC) -d bin $<
 bin/TodoChangeServlet.class: src/TodoChangeServlet.java
-	$(JAVAC) -sourcepath src -d bin $<
-
+	$(JAVAC) -d bin $<

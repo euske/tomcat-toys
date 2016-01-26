@@ -19,7 +19,7 @@
         System.out.println("detail: userId="+userId);
         System.out.println("detail: todoId="+todoId);
 	try {
-	    Database db = new Database(url);
+	    Database db = new Database();
 	    try {
 		ResultSet rs = db.getTodo1(userId, Integer.parseInt(todoId));
 		while (rs.next()) {

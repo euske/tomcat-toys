@@ -27,8 +27,8 @@ UserId=<%= userId %>
 	try {
 	    ResultSet rs = db.getTodos(userId);
 	    while (rs.next()) {
-		int todoId = rs1.getInt(1);
-		String todoText = rs1.getString(2);
+		int todoId = rs.getInt(1);
+		String todoText = rs.getString(2);
 		System.out.println("todo: todoId="+todoId);
 		System.out.println("todo: todoText="+todoText);
 %>
