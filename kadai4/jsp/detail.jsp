@@ -1,5 +1,5 @@
 <%@page import="java.sql.*" %>
-<%@page import="TodoDAO.Database" %>
+<%@page import="TodoDAO.*" %>
 <html>
 <body>
 <h1>Details</h1>
@@ -21,23 +21,21 @@
 	try {
 	    Database db = new Database();
 	    try {
-		ResultSet rs = db.getTodo1(userId, Integer.parseInt(todoId));
-		while (rs.next()) {
-		    String todoText = rs.getString(1);
-		    System.out.println("detail: todoText="+todoText);
+		TodoEntryBean entry = db.getTodo1(userId, Integer.parseInt(todoId));
+		System.out.println("detail: todoText="+entry.getTodoText());
+		request.setAttribute("entry", entry);
 %>
 <form method="POST" action="change">
-<input type=hidden name="todo" value="<%= todoId %>" />
-<input name="text" value="<%= todoText %>" />
+<input type=hidden name="todo" value="${entry.todoId}" />
+<input name="text" value="${entry.todoText}" />
 <input type=submit value="Change" />
 </form>
 
 <form method="POST" action="remove">
-<input type=hidden name="todo" value="<%= todoId %>" />
+<input type=hidden name="todo" value="${entry.todoId}" />
 <input type=submit value="Remove" />
 </form>
 <%
-		}
 	    } finally {
 		db.close();
 	    }

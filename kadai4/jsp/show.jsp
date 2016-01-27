@@ -1,5 +1,6 @@
 <%@page import="java.sql.*" %>
-<%@page import="TodoDAO.Database" %>
+<%@page import="TodoDAO.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <body>
 <h1>My TODO</h1>
@@ -25,19 +26,15 @@ UserId=<%= userId %>
     try {
 	Database db = new Database();
 	try {
-	    ResultSet rs = db.getTodos(userId);
-	    while (rs.next()) {
-		int todoId = rs.getInt(1);
-		String todoText = rs.getString(2);
-		System.out.println("todo: todoId="+todoId);
-		System.out.println("todo: todoText="+todoText);
+	    request.setAttribute("entries", db.getTodos(userId));
 %>
-<tr><td>
-<a href="detail.jsp?todo=<%= todoId %>">
-<%= todoText %>
-</td></tr>
+<c:forEach var="entry" items="${entries}">
+ <tr><td>
+ <a href="detail.jsp?todo=${entry.todoId}">
+  ${entry.todoText}
+ </a></td></tr>
+</c:forEach>
 <%
-	    }
 	} finally {
 	    db.close();
 	}

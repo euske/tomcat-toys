@@ -13,7 +13,9 @@ CLASSES=bin/TodoLoginServlet.class \
 	bin/TodoSignUpServlet.class \
 	bin/TodoAddServlet.class \
 	bin/TodoRemoveServlet.class \
-	bin/TodoChangeServlet.class
+	bin/TodoChangeServlet.class \
+	bin/TodoDAO/Database.class \
+	bin/TodoDAO/TodoEntryBean.class
 
 all: $(CLASSES)
 
@@ -43,3 +45,8 @@ bin/TodoRemoveServlet.class: src/TodoRemoveServlet.java
 	$(JAVAC) -d bin $<
 bin/TodoChangeServlet.class: src/TodoChangeServlet.java
 	$(JAVAC) -d bin $<
+
+bin/TodoDAO/Database.class: src/TodoDAO/Database.java
+
+bin/TodoDAO/TodoEntryBean.class: src/TodoDAO/TodoEntryBean.java
+
