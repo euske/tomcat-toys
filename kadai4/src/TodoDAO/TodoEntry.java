@@ -1,12 +1,12 @@
 package TodoDAO;
 import java.io.*;
 
-public class TodoEntryBean implements Serializable {
+public class TodoEntry implements Serializable {
 
     private int todoId;
     private String todoText;
 
-    public TodoEntryBean() {
+    public TodoEntry() {
     }
 
     public int getTodoId() {

@@ -1,5 +1,6 @@
 <%@page import="java.sql.*" %>
 <%@page import="TodoDAO.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <body>
 <h1>Details</h1>
@@ -21,13 +22,13 @@
 	try {
 	    Database db = new Database();
 	    try {
-		TodoEntryBean entry = db.getTodo1(userId, Integer.parseInt(todoId));
+		TodoEntry entry = db.getTodo1(userId, Integer.parseInt(todoId));
 		System.out.println("detail: todoText="+entry.getTodoText());
 		request.setAttribute("entry", entry);
 %>
 <form method="POST" action="change">
 <input type=hidden name="todo" value="${entry.todoId}" />
-<input name="text" value="${entry.todoText}" />
+<textarea name="text"><c:out value="${entry.todoText}" /></textarea>
 <input type=submit value="Change" />
 </form>
 

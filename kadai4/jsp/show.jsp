@@ -1,6 +1,6 @@
 <%@page import="java.sql.*" %>
 <%@page import="TodoDAO.*" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <body>
 <h1>My TODO</h1>
@@ -31,7 +31,7 @@ UserId=<%= userId %>
 <c:forEach var="entry" items="${entries}">
  <tr><td>
  <a href="detail.jsp?todo=${entry.todoId}">
-  ${entry.todoText}
+  <c:out value="${entry.todoText}" />
  </a></td></tr>
 </c:forEach>
 <%

@@ -84,14 +84,14 @@ public class Database {
 	stmt1.executeUpdate();
     }
     
-    public ArrayList<TodoEntryBean> getTodos(int userId) throws SQLException {
+    public ArrayList<TodoEntry> getTodos(int userId) throws SQLException {
 	String sql1 = "SELECT TodoId,TodoText FROM todo WHERE UserId = ?;";
 	PreparedStatement stmt1 = conn.prepareStatement(sql1);
 	stmt1.setInt(1, userId);
 	ResultSet rs1 = stmt1.executeQuery();
-	ArrayList<TodoEntryBean> entries = new ArrayList<TodoEntryBean>();
+	ArrayList<TodoEntry> entries = new ArrayList<TodoEntry>();
 	while (rs1.next()) {
-	    TodoEntryBean entry = new TodoEntryBean();
+	    TodoEntry entry = new TodoEntry();
 	    entry.setTodoId(rs1.getInt(1));
 	    entry.setTodoText(rs1.getString(2));
 	    entries.add(entry);
@@ -99,15 +99,15 @@ public class Database {
 	return entries;
     }
 
-    public TodoEntryBean getTodo1(int userId, int todoId) throws SQLException {
+    public TodoEntry getTodo1(int userId, int todoId) throws SQLException {
 	String sql1 = "SELECT TodoText FROM todo WHERE UserId = ? AND TodoId = ?;";
 	PreparedStatement stmt1 = conn.prepareStatement(sql1);
 	stmt1.setInt(1, userId);
 	stmt1.setInt(2, todoId);
 	ResultSet rs1 = stmt1.executeQuery();
-	TodoEntryBean entry = null;
+	TodoEntry entry = null;
 	if (rs1.next()) {
-	    entry = new TodoEntryBean();
+	    entry = new TodoEntry();
 	    entry.setTodoId(todoId);
 	    entry.setTodoText(rs1.getString(1));
 	}
