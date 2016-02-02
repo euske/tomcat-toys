@@ -30,6 +30,6 @@ public class TodoRemoveServlet extends HttpServlet {
 		System.out.println(e);
 	    }
 	}
-	response.sendRedirect("show.jsp");
+	response.sendRedirect("show");
     }
 }

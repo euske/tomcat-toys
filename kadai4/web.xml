@@ -54,4 +54,22 @@
   <url-pattern>/change</url-pattern>
 </servlet-mapping>
 
+<servlet>
+  <servlet-name>TodoShowServlet</servlet-name>
+  <servlet-class>TodoShowServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>TodoShowServlet</servlet-name>
+  <url-pattern>/show</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>TodoDetailServlet</servlet-name>
+  <servlet-class>TodoDetailServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>TodoDetailServlet</servlet-name>
+  <url-pattern>/detail</url-pattern>
+</servlet-mapping>
+
 </web-app>

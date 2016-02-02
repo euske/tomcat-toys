@@ -18,7 +18,7 @@ public class TodoLoginServlet extends HttpServlet {
 		System.out.println("login: userId="+userId);
 		Cookie c = new Cookie("userId", Integer.toString(userId));
 		response.addCookie(c);
-		response.sendRedirect("show.jsp");
+		response.sendRedirect("show");
 		return;
 	    } finally {
 		db.close();
