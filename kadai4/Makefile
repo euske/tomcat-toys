@@ -33,7 +33,7 @@ install: $(CLASSES)
 	-$(CP) bin/*.class $(APPDIR)/WEB-INF/classes
 	-$(CP) bin/TodoDAO/*.class $(APPDIR)/WEB-INF/classes/TodoDAO
 	-$(CP) lib/*.jar $(APPDIR)/WEB-INF/lib
-	-$(CP) jsp/*.jsp $(APPDIR)
+	-$(CP) jsp/*.jsp jsp/*.css $(APPDIR)
 
 bin/TodoLoginServlet.class: src/TodoLoginServlet.java
 	$(JAVAC) -d bin $<

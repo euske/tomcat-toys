@@ -1,0 +1,7 @@
+h1 { padding: 0.2em; color: white; background: #00aa00; }
+table { border-collapse: collapse; }
+.userbox { border: 2px solid gray; margin: 1em; padding: 1em; background: #ffffcc; }
+.addbox { border: 2px solid gray; margin: 1em; padding: 1em; background: #ccffff; }
+.delbox { border: 2px solid gray; margin: 1em; padding: 1em; background: #ffbbff; }
+.listbox { border: 2px solid black; margin: 1em; padding: 1em; }
+.itembox { padding: 1em; font-size: 120%; }
