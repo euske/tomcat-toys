@@ -2,7 +2,7 @@ import java.io.*;
 import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import TodoDAO.Database;
+import TodoDAO.*;
 
 public class TodoRemoveServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
@@ -20,7 +20,7 @@ public class TodoRemoveServlet extends HttpServlet {
 	    System.out.println("remove: userId="+userId);
 	    System.out.println("remove: todoId="+todoId);
 	    try {
-		Database db = new Database();
+		Database db = new MySQLDatabase();
 		try {
 		    db.removeTodo(userId, Integer.parseInt(todoId));
 		} finally {

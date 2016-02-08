@@ -19,7 +19,7 @@ public class TodoDetailServlet extends HttpServlet {
 	    System.out.println("detail: userId="+userId);
 	    System.out.println("detail: todoId="+todoId);
 	    try {
-		Database db = new Database();
+		Database db = new MySQLDatabase();
 		try {
 		    TodoEntry entry = db.getTodo1(userId, Integer.parseInt(todoId));
 		    System.out.println("detail: todoText="+entry.getTodoText());

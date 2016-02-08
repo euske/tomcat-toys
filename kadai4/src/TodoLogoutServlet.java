@@ -1,7 +1,7 @@
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import TodoDAO.Database;
+import TodoDAO.*;
 
 public class TodoLogoutServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,

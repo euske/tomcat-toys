@@ -2,7 +2,7 @@ import java.io.*;
 import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import TodoDAO.Database;
+import TodoDAO.*;
 
 public class TodoSignUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
@@ -12,7 +12,7 @@ public class TodoSignUpServlet extends HttpServlet {
 	String username = request.getParameter("username");
 	String password = request.getParameter("password");
 	try {
-	    Database db = new Database();
+	    Database db = new MySQLDatabase();
 	    try {
 		db.signup(username);
 	    } finally {

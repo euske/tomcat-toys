@@ -1,8 +1,9 @@
-<%@page import="java.sql.*" %>
+﻿<%@page import="java.sql.*" %>
 <%@page import="TodoDAO.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="style.css">
 <title>My Todo</title>
 <body>

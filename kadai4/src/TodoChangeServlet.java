@@ -2,13 +2,14 @@ import java.io.*;
 import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import TodoDAO.Database;
+import TodoDAO.*;
 
 public class TodoChangeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
 			  HttpServletResponse response)
         throws ServletException, IOException {
 	
+        request.setCharacterEncoding("utf-8");
 	String todoText = request.getParameter("text");
 	String todoId = request.getParameter("todo");
 	int userId = -1;
@@ -22,7 +23,7 @@ public class TodoChangeServlet extends HttpServlet {
 	    System.out.println("change: todoText="+todoText);
 	    System.out.println("change: todoId="+todoId);
 	    try {
-		Database db = new Database();
+		Database db = new MySQLDatabase();
 		try {
 		    db.changeTodo(userId, Integer.parseInt(todoId), todoText);
 		} finally {

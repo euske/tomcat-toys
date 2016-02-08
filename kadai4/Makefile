@@ -7,7 +7,7 @@ JAVAC=javac -cp "$(CLASSPATH)"
 APPDIR=$$HOME/Windows/bin/tomcat/webapps/kadai4
 
 LIBDIR=lib
-CLASSPATH=$(LIBDIR)/servlet-api.jar:$(LIBDIR)/sqlite-jdbc-3.8.7.jar:src
+CLASSPATH=src:$(LIBDIR)/servlet-api.jar
 CLASSES=bin/TodoLoginServlet.class \
 	bin/TodoLogoutServlet.class \
 	bin/TodoSignUpServlet.class \
@@ -17,6 +17,7 @@ CLASSES=bin/TodoLoginServlet.class \
 	bin/TodoShowServlet.class \
 	bin/TodoDetailServlet.class \
 	bin/TodoDAO/Database.class \
+	bin/TodoDAO/MySQLDatabase.class \
 	bin/TodoDAO/TodoEntry.class
 
 all: $(CLASSES)
@@ -53,6 +54,8 @@ bin/TodoDetailServlet.class: src/TodoDetailServlet.java
 	$(JAVAC) -d bin $<
 
 bin/TodoDAO/Database.class: src/TodoDAO/Database.java
+
+bin/TodoDAO/MySQLDatabase.class: src/TodoDAO/MySQLDatabase.java
 
 bin/TodoDAO/TodoEntry.class: src/TodoDAO/TodoEntry.java
 

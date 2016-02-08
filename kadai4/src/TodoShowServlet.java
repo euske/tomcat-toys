@@ -18,7 +18,7 @@ public class TodoShowServlet extends HttpServlet {
 	    System.out.println("show: userId="+userId);
 	    request.setAttribute("userId", userId);
 	    try {
-		Database db = new Database();
+		Database db = new MySQLDatabase();
 		try {
 		    request.setAttribute("entries", db.getTodos(userId));
 		} finally {
