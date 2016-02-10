@@ -3,15 +3,15 @@ import java.io.*;
 import java.sql.*;
 import java.util.*;
 
-public class MySQLDatabase implements Database {
+public class SQLiteDatabase implements Database {
 
-    public static String URL = "jdbc:mysql://127.0.0.1:3306/test";
+    public static String URL = "jdbc:sqlite:..\\webapps\\kadai4\\WEB-INF\\var\\todo.db";
 
     private Connection conn;
     
-    public MySQLDatabase() {
+    public SQLiteDatabase() {
 	try {
-	    Class.forName("com.mysql.jdbc.Driver");
+	    Class.forName("org.sqlite.JDBC");
 	    this.conn = DriverManager.getConnection(URL);
 	} catch (ClassNotFoundException e) {
 	    System.out.println(e);

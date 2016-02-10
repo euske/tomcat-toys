@@ -18,6 +18,7 @@ CLASSES=bin/TodoLoginServlet.class \
 	bin/TodoDetailServlet.class \
 	bin/TodoDAO/Database.class \
 	bin/TodoDAO/MySQLDatabase.class \
+	bin/TodoDAO/SQLiteDatabase.class \
 	bin/TodoDAO/TodoEntry.class
 
 all: $(CLASSES)
@@ -56,6 +57,8 @@ bin/TodoDetailServlet.class: src/TodoDetailServlet.java
 bin/TodoDAO/Database.class: src/TodoDAO/Database.java
 
 bin/TodoDAO/MySQLDatabase.class: src/TodoDAO/MySQLDatabase.java
+
+bin/TodoDAO/SQLiteDatabase.class: src/TodoDAO/SQLiteDatabase.java
 
 bin/TodoDAO/TodoEntry.class: src/TodoDAO/TodoEntry.java
 
