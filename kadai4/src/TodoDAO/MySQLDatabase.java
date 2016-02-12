@@ -2,18 +2,19 @@ package TodoDAO;
 import java.io.*;
 import java.sql.*;
 import java.util.*;
+import javax.naming.*;
+import javax.sql.*;
 
 public class MySQLDatabase implements Database {
-
-    public static String URL = "jdbc:mysql://127.0.0.1:3306/test";
 
     private Connection conn;
     
     public MySQLDatabase() {
 	try {
-	    Class.forName("com.mysql.jdbc.Driver");
-	    this.conn = DriverManager.getConnection(URL);
-	} catch (ClassNotFoundException e) {
+	    InitialContext initCon = new InitialContext();
+	    DataSource ds = (DataSource)initCon.lookup("java:comp/env/jdbc/todoApp");
+	    this.conn = ds.getConnection();
+	} catch (NamingException e) {
 	    System.out.println(e);
 	} catch (SQLException e) {
 	    System.out.println(e);

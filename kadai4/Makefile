@@ -15,8 +15,8 @@ CLASSES=bin/TodoLoginServlet.class \
 	bin/TodoRemoveServlet.class \
 	bin/TodoChangeServlet.class \
 	bin/TodoShowServlet.class \
-	bin/TodoDetailServlet.class \
-	bin/TodoDAO/Database.class \
+	bin/TodoDetailServlet.class
+LIBS=bin/TodoDAO/Database.class \
 	bin/TodoDAO/MySQLDatabase.class \
 	bin/TodoDAO/SQLiteDatabase.class \
 	bin/TodoDAO/TodoEntry.class
@@ -32,6 +32,7 @@ install: $(CLASSES)
 	-$(MKDIR) $(APPDIR)/WEB-INF/classes/TodoDAO
 	-$(MKDIR) $(APPDIR)/WEB-INF/lib
 	-$(CP) web.xml $(APPDIR)/WEB-INF
+	-$(CP) context.xml $(APPDIR)/META-INF
 	-$(CP) bin/*.class $(APPDIR)/WEB-INF/classes
 	-$(CP) bin/TodoDAO/*.class $(APPDIR)/WEB-INF/classes/TodoDAO
 	-$(CP) lib/*.jar $(APPDIR)/WEB-INF/lib
@@ -54,11 +55,16 @@ bin/TodoShowServlet.class: src/TodoShowServlet.java
 bin/TodoDetailServlet.class: src/TodoDetailServlet.java
 	$(JAVAC) -d bin $<
 
+src/TodoLoginServlet.java: $(LIBS)
+src/TodoLogoutServlet.java: $(LIBS)
+src/TodoSignUpServlet.java: $(LIBS)
+src/TodoAddServlet.java: $(LIBS)
+src/TodoRemoveServlet.java: $(LIBS)
+src/TodoChangeServlet.java: $(LIBS)
+src/TodoShowServlet.java: $(LIBS)
+src/TodoDetailServlet.java: $(LIBS)
+
 bin/TodoDAO/Database.class: src/TodoDAO/Database.java
-
 bin/TodoDAO/MySQLDatabase.class: src/TodoDAO/MySQLDatabase.java
-
 bin/TodoDAO/SQLiteDatabase.class: src/TodoDAO/SQLiteDatabase.java
-
 bin/TodoDAO/TodoEntry.class: src/TodoDAO/TodoEntry.java
-

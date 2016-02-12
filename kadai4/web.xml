@@ -1,4 +1,10 @@
 <web-app>
+<resource-ref>
+  <description>DB</description>
+  <res-ref-name>jdbc/todoApp</res-ref-name>
+  <res-type>javax.sql.DataSource</res-type>
+  <res-auth>Container</res-auth>
+</resource-ref>
 
 <servlet>
   <servlet-name>TodoLoginServlet</servlet-name>
