@@ -2,8 +2,10 @@ import java.io.*;
 import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 import TodoDAO.*;
 
+@WebServlet("/detail")
 public class TodoDetailServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
 			 HttpServletResponse response)

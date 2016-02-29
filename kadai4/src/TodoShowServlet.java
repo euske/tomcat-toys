@@ -2,8 +2,10 @@ import java.io.*;
 import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 import TodoDAO.*;
 
+@WebServlet("/show")
 public class TodoShowServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
 			 HttpServletResponse response)

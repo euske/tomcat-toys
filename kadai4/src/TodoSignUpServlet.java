@@ -2,8 +2,10 @@ import java.io.*;
 import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 import TodoDAO.*;
 
+@WebServlet("/signup")
 public class TodoSignUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
 			  HttpServletResponse response)
